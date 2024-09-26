@@ -25,6 +25,9 @@ nonUniqueElements([10, 9, 10, 10, 9, 8]) == [10, 9, 10, 10, 9]
  */
 
 export default function nonUniqueElements(data) {
+  if(!Array.isArray(data)){
+   return false;
+  }
   let dict = new Map();
   for (let i =0; i < data.length; i++){
     if (!dict.has(data[i])){

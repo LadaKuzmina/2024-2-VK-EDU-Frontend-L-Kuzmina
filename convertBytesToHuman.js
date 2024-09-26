@@ -18,14 +18,19 @@
  */
 
 export default function convertBytesToHuman(bytes) {
-  if (typeof bytes !== "number" || bytes < 0){
+  if (typeof bytes !== "number" || bytes < 0 || isNaN(bytes)){
     return false;
   }
+  
   const unitsOfMeasurement = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
   let i = 0;
   while (bytes >= 1024){
     bytes = bytes / 1024;
     ++i;
+  }
+
+  if (i >= unitsOfMeasurement.length) {
+    return `${parseFloat(bytes.toFixed(2))} PB`;
   }
 
   return `${parseFloat(bytes.toFixed(2))} ${unitsOfMeasurement[i]}`;
