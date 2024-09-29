@@ -26,7 +26,7 @@ nonUniqueElements([10, 9, 10, 10, 9, 8]) == [10, 9, 10, 10, 9]
 
 export default function nonUniqueElements(data) {
   if(!Array.isArray(data)){
-   return false;
+    return false;
   }
   let dict = new Map();
   for (let i =0; i < data.length; i++){
@@ -38,3 +38,29 @@ export default function nonUniqueElements(data) {
   }
   return data.filter(d => dict.get(d) > 1);
 }
+
+function nonUniqueElementsWithObject(data) {
+  if (!Array.isArray(data)) {
+    return false;
+  }
+  let obj = {};
+  for (let i = 0; i < data.length; i++) {
+    if (!obj.hasOwnProperty(data[i])) {
+      obj[data[i]] = 0;
+    }
+    obj[data[i]]++;
+  }
+  return data.filter(d => obj[d] > 1);
+}
+
+function stopwatchDecorator(func){
+  return function() {
+    let start = performance.now();
+    let result = func.apply(this, arguments);
+    let end = performance.now();
+    console.log(`Время выполнения: ${end - start} мс`);
+    return result;
+  };
+}
+console.log(stopwatchDecorator(nonUniqueElements)([1, 2, 3, 1, 2]));
+console.log(stopwatchDecorator(nonUniqueElementsWithObject)([1, 2, 3, 1, 2]));

@@ -5,6 +5,9 @@ test('returns correct sentence', () => {
   expect(correctSentence("Greetings, friends")).toBe("Greetings, friends.")
   expect(correctSentence("Greetings, friends.")).toBe("Greetings, friends.")
   expect(correctSentence("hello")).toBe("Hello.")
+  expect(correctSentence('&quot;hello&amp; welcome to &lt;course&gt;&quot;')).toBe('"Hello& welcome to <course>".');
+  expect(correctSentence('hello&amp; welcome to &lt;course&gt;&quot;')).toBe('Hello& welcome to <course>".');
+  expect(correctSentence('')).toBe('');
 })
 test('returns false', () => {
   expect(correctSentence(1)).toBe(false);
