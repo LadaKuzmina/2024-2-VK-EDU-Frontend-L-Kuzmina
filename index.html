@@ -4,13 +4,42 @@
         <meta charset="UTF-8">
         <title>Send a message</title>
     <link href="style.css" rel="stylesheet"></head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <body>
-    <div id="list-message"></div>
+    <header class="header">
+        <span class="material-symbols-outlined">arrow_back</span>
+        <div class="interlocutor">
+            <span class="material-symbols-outlined">account_circle</span>
+            <div class="info-interlocutor">
+                <h1 class="name-interlocutor">Дженнифер</h1>
+                <span class="time-interlocutor">была 2 часа назад в сети</span>
+            </div>
+        </div>
+        <span class="material-symbols-outlined">search</span>
+        <span class="material-symbols-outlined">more_vert</span>
+    </header>
+    <main>
+        <div class="message-interlocutor">
+            <div class="message-item-interlocutor">
+                <span class="message-author">Дженнифер</span>
+                <span class="message-text">Привет! Как твои дела?</span>
+                <span class="message-timestamp">10:53</span>
+            </div>
+            <div class="message-item-interlocutor">
+                <span class="message-author">Дженнифер</span>
+                <span class="message-text">Ты свободна на этой неделе?</span>
+                <span class="message-timestamp">10:53</span>
+            </div>
+        </div>
+        <div id="list-message"></div>
+    </main>
+    <footer>
         <form class="form" action="/">
             <div class="message">
                 <input class="form-input" name="message-text" placeholder="Сообщение" type="text" id="input-id">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368" class="attachment"><path d="M330-240q-104 0-177-73T80-490q0-104 73-177t177-73h370q75 0 127.5 52.5T880-560q0 75-52.5 127.5T700-380H350q-46 0-78-32t-32-78q0-46 32-78t78-32h370v80H350q-13 0-21.5 8.5T320-490q0 13 8.5 21.5T350-460h350q42-1 71-29.5t29-70.5q0-42-29-71t-71-29H330q-71-1-120.5 49T160-490q0 70 49.5 119T330-320h390v80H330Z"/></svg>
+                <span class="material-symbols-outlined">attachment</span>
             </div>
         </form>
+    </footer>
     <script type="text/javascript" src="bundle.js"></script></body>
 </html>
