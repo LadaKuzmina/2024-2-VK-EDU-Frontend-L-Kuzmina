@@ -28,7 +28,7 @@ const renderMessage = (message) => {
     listMessage.appendChild(messageItem);
 }
 
-function renderMessagesFromLocalStorage() {
+const renderMessagesFromLocalStorage = () => {
     let messages = getMessagesFromLocalStorage();
 
     messages.forEach(message => {
@@ -36,7 +36,7 @@ function renderMessagesFromLocalStorage() {
     });
 }
 
-function saveMessageToLocalStorages() {
+const saveMessageToLocalStorages = () => {
     let messages = getMessagesFromLocalStorage();
     let newMessage = {
         message: input.value,
@@ -50,18 +50,18 @@ function saveMessageToLocalStorages() {
 }
 
 
-function handleSubmit (event) {
+const handleSubmit = (event) => {
     event.preventDefault();
 }
 
-function handleKeyPress (event) {
+const handleKeyPress = (event) => {
     if (event.keyCode === keyCodeEnter) {
         handleEnterMessage(event);
         form.dispatchEvent(new Event('submit'));
     }
 }
 
-function handleEnterMessage (event) {
+const handleEnterMessage = (event) => {
     if (event.keyCode === keyCodeEnter) {
         if (input.value.trim() !== '') {
             saveMessageToLocalStorages();
