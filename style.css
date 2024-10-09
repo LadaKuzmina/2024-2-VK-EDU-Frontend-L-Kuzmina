@@ -21,20 +21,32 @@ body {
 .header {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     background-color: #8e24aa;
     color: #fdfbfd;
     margin-bottom: 10px;
 }
 
 .header span {
-    font-size: 40px;
+    font-size: 30px;
 }
 
+#arrow-back {
+    margin-left: 15px;
+}
+
+#default-icon {
+    font-size: 60px;
+}
+
+#more-vert {
+    margin-left: 10px;
+    justify-items: flex-end;
+}
 .interlocutor {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 25px;
     padding-bottom: 10px;
 }
 
@@ -44,12 +56,16 @@ body {
 }
 
 .name-interlocutor {
-    margin: 20px 0;
+    margin: 15px 0;
 }
 
 .header .time-interlocutor {
     color: #d0a6dc;
     font-size: 17px;
+}
+
+.symbols {
+    margin-right: 10px;
 }
 
 .form {
