@@ -1,0 +1,33 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #8e24aa;
+    color: #fdfbfd;
+    margin-bottom: 10px;
+}
+
+.header span {
+    font-size: 40px;
+}
+
+.interlocutor {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 10px;
+}
+
+.info-interlocutor {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-interlocutor {
+    margin: 20px 0;
+}
+
+.header .time-interlocutor {
+    color: #d0a6dc;
+    font-size: 17px;
+}

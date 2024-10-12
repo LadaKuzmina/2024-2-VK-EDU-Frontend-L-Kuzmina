@@ -1,0 +1,9 @@
+.list-chats {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info-interlocutor {
+    display: flex;
+    flex-direction: column;
+}

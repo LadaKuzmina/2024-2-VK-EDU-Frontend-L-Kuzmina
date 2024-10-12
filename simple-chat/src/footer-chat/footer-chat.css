@@ -1,0 +1,10 @@
+.message {
+    border-radius: 4px;
+    padding: 10px 4px;
+    background-color: white;
+    display: flex;
+}
+
+.form-input {
+    background: white;
+}
