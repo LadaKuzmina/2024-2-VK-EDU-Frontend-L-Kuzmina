@@ -67,6 +67,7 @@ const handleEnterMessage = (event) => {
             saveMessageToLocalStorages();
             input.value = '';
             input.placeholder = 'Сообщение';
+            window.scrollTo(0, document.body.scrollHeight);
         }
     }
 }
