@@ -26,6 +26,9 @@ const renderMessage = (message) => {
     messageItem.appendChild(messageTextSpan);
     messageItem.appendChild(timestampSpan);
     listMessage.appendChild(messageItem);
+
+    // подскролл к новому сообщению
+    messageItem.scrollIntoView();
 }
 
 const renderMessagesFromLocalStorage = () => {
@@ -67,7 +70,9 @@ const handleEnterMessage = (event) => {
             saveMessageToLocalStorages();
             input.value = '';
             input.placeholder = 'Сообщение';
-            window.scrollTo(0, document.body.scrollHeight);
+
+            // скролл всей страницы - это нам не надо / нужно чтобы скроллился только блок сообщений
+            // window.scrollTo(0, document.body.scrollHeight);
         }
     }
 }
