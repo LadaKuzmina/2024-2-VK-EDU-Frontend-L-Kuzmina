@@ -43,7 +43,7 @@ module.exports = {
                 ],
             },
             {
-                test: /index\.css$/,
+                test: /\.css$/,
                 include: SRC_PATH,
                 use: [
                     {
