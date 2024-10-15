@@ -31,3 +31,10 @@
     color: #222022;
     font-weight: bold;
 }
+
+#check-icon {
+    font-size: 20px;
+    color: #676767;
+    align-self: flex-end;
+    margin-left: 10px;
+}
