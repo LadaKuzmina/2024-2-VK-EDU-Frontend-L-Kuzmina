@@ -1,13 +1,28 @@
 import './index.css';
+import {createMainChats} from "./main-chats/main-chats";
+import {createHeaderChats} from "./header-chats/header-chats";
+import {chatsMocks} from "./chats-mocks/chat-mocks";
+import {createNewChatButton} from "./new-button-chat/new-button-chat";
 
-const form = document.querySelector('form');
-const input = document.getElementById('input-id');
-const listMessage = document.getElementById('list-message');
-const keyCodeEnter = 13;
 
-const getMessagesFromLocalStorage = () => JSON.parse(localStorage.getItem('myMessage') || '[]');
+if (localStorage.length === 0) {
+    chatsMocks.forEach(chat => {
+        localStorage.setItem(`myMessage-${chat.id}`, JSON.stringify(chat.messages))
+    });
+}
+
+const root = document.getElementById('root');
+root.appendChild(createHeaderChats());
+const mainChatsElement = createMainChats();
+root.appendChild(mainChatsElement);
+const newChatButton = createNewChatButton();
+root.appendChild(newChatButton);
+
+export const getMessagesFromLocalStorage =
+    (chatId) => JSON.parse(localStorage.getItem(`myMessage-${chatId}`) || '[]');
 
 const renderMessage = (message) => {
+    const listMessage = document.getElementById('list-message');
     const messageItem = document.createElement('div');
     messageItem.className = 'message-item';
 
@@ -27,56 +42,20 @@ const renderMessage = (message) => {
     messageItem.appendChild(timestampSpan);
     listMessage.appendChild(messageItem);
 
-    // подскролл к новому сообщению
     messageItem.scrollIntoView();
 }
 
-const renderMessagesFromLocalStorage = () => {
-    let messages = getMessagesFromLocalStorage();
-
-    messages.forEach(message => {
-        renderMessage(message);
-    });
-}
-
-const saveMessageToLocalStorages = () => {
-    let messages = getMessagesFromLocalStorage();
+export const saveMessageToLocalStorages = (chatId) => {
+    let messages = getMessagesFromLocalStorage(chatId);
+    const input = document.getElementById('input-id');
     let newMessage = {
         message: input.value,
         timestamp: new Date().toLocaleTimeString().slice(0, -3),
-        author: 'Автор'
+        author: 'Автор',
+        chatOwner: messages[0].chatOwner
     };
     messages.push(newMessage);
 
-    localStorage.setItem('myMessage', JSON.stringify(messages));
+    localStorage.setItem(`myMessage-${chatId}`, JSON.stringify(messages));
     renderMessage(newMessage);
 }
-
-
-const handleSubmit = (event) => {
-    event.preventDefault();
-}
-
-const handleKeyPress = (event) => {
-    if (event.keyCode === keyCodeEnter) {
-        handleEnterMessage(event);
-        form.dispatchEvent(new Event('submit'));
-    }
-}
-
-const handleEnterMessage = (event) => {
-    if (event.keyCode === keyCodeEnter) {
-        if (input.value.trim() !== '') {
-            saveMessageToLocalStorages();
-            input.value = '';
-            input.placeholder = 'Сообщение';
-
-            // скролл всей страницы - это нам не надо / нужно чтобы скроллился только блок сообщений
-            // window.scrollTo(0, document.body.scrollHeight);
-        }
-    }
-}
-
-form.addEventListener('submit', (e) => handleSubmit(e));
-form.addEventListener('keypress', (e) => handleKeyPress(e));
-document.addEventListener("DOMContentLoaded", renderMessagesFromLocalStorage);
