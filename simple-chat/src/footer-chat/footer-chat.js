@@ -32,7 +32,7 @@ export const createFooterChat = (chatId) => {
     form.addEventListener('submit', (e) => handleSubmit(e, chatId));
     form.addEventListener('keypress', (e) => handleKeyPress(e, chatId));
 
-    const messageDiv = createElement('div', 'message');
+    const messageDiv = createElement('div', 'message-footer');
 
     const input = createElement('input', 'form-input');
     input.name = 'message-text';

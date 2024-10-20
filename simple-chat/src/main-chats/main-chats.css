@@ -6,10 +6,12 @@
 .chat-item {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background-color: white;
     border-bottom: #e5e5e5 2px solid;
     padding: 10px;
     cursor: pointer;
+    transition: transform .2s ease;
 }
 
 .chat-item .material-symbols-outlined {
@@ -18,6 +20,10 @@
 
 .chat-item .message {
     color: #676767;
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .chat-item .user-info-interlocutor {
@@ -37,4 +43,19 @@
     color: #676767;
     align-self: flex-end;
     margin-left: 10px;
+}
+
+.info-right-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.info-left-side {
+    display: flex;
+    align-items: center;
+}
+
+.chat-item:hover {
+    background: #eaeaea;
 }

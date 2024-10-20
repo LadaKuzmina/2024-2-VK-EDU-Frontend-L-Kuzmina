@@ -34,6 +34,7 @@ export const createHeaderChat = (interlocutorName) => {
     nameInterlocutor.innerText = interlocutorName;
 
     const timeInterlocutor = createElement('span', 'time-interlocutor');
+    timeInterlocutor.innerText = 'был в сети 2 часа назад'
 
     infoInterlocutor.appendChild(nameInterlocutor);
     infoInterlocutor.appendChild(timeInterlocutor);

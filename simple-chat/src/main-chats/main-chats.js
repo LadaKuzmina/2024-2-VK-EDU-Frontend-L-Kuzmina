@@ -47,7 +47,16 @@ export const createMainChats = () => {
             checkIcon.id = 'check-icon'
 
             userInfo.append(nameInterlocutor, messageInterlocutor);
-            chatItem.append(avatar, userInfo, messageTimestamp, checkIcon);
+
+            const infoRightSide = createElement('div', 'info-right-side');
+            infoRightSide.append(messageTimestamp, checkIcon);
+
+            const infoLeftSide = createElement('div', 'info-left-side');
+
+            infoLeftSide.append(avatar, userInfo);
+
+            chatItem.append(infoLeftSide, infoRightSide);
+
             chatItem.addEventListener('click', () => renderChatPage(author, messages, id));
 
             listChats.appendChild(chatItem);
