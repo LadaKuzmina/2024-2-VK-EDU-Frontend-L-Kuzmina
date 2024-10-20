@@ -1,5 +1,49 @@
-.new-chat-button {
+.new-chat-button  {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #8e24aa;
+    cursor: pointer;
+    box-shadow: 0 0 0 rgba(126, 32, 160, 1);;
+    animation: pulse 2s infinite;
+    text-align: center;
+}
+.new-chat-button span {
+    color: white;
+}
+
+.new-chat-button:hover {
+    animation: none;
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-box-shadow: 0 0 0 0 rgba(126, 32, 160, 0.4);
+    }
+    70% {
+        -webkit-box-shadow: 0 0 0 10px rgba(126, 32, 160, 0);
+    }
+    100% {
+        -webkit-box-shadow: 0 0 0 0 rgba(126, 32, 160, 0);
+    }
+}
+@keyframes pulse {
+    0% {
+        -moz-box-shadow: 0 0 0 0 rgba(126, 32, 160, 0.4);
+        box-shadow: 0 0 0 0 rgba(126, 32, 160, 0.4);
+    }
+    70% {
+        -moz-box-shadow: 0 0 0 10px rgba(126, 32, 160, 0);
+        box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+    }
+    100% {
+        -moz-box-shadow: 0 0 0 0 rgba(126, 32, 160, 0);
+        box-shadow: 0 0 0 0 rgba(126, 32, 160, 0);
+    }
 }

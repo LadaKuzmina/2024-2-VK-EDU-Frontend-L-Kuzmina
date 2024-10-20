@@ -5,21 +5,23 @@
     gap: 3px;
     background-color: #f3e5f5;
     color: #222022;
-    padding: 5px 10px;
-    margin: 3px;
+    padding: 10px 15px;
+    margin: 5px;
     border-radius: 10px;
     align-self: flex-end;
+    position: relative;
+    animation: fadeIn 0.5s ease-in-out forwards;
+    max-width: 500px;
 }
 
-.message-interlocutor {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-right: 10px;
-}
-
-.message-interlocutor .message-timestamp{
-    align-self: flex-end;
+.message-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #f3e5f5 transparent transparent transparent;
 }
 
 .message-item-interlocutor {
@@ -28,10 +30,26 @@
     gap: 3px;
     background-color: #ffffff;
     color: #222022;
-    padding: 5px 10px;
-    margin: 3px;
+    padding: 10px 15px;
+    margin: 5px;
     border-radius: 10px;
     align-self: flex-start;
+    position: relative;
+}
+
+.message-item-interlocutor::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #ffffff transparent transparent transparent;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 .message-author {

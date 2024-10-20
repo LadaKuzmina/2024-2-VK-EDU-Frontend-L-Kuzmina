@@ -5,7 +5,7 @@
     border: 1px solid rgba(25, 25, 25, 0.32);
 }
 
-.message {
+.message-footer {
     border-radius: 4px;
     padding: 10px 4px;
     background-color: white;
