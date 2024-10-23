@@ -1,6 +1,8 @@
-import {createElement} from "./createElement";
-import "./createIcons.css";
+import React from 'react';
+import './createIcons.css';
 
-export const createIcons = () =>{
-    return createElement('span', 'material-symbols-outlined');
-}
+const CreateIcons = () => {
+    return <span className="material-symbols-outlined"></span>;
+};
+
+export default CreateIcons;
