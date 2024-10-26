@@ -2,7 +2,7 @@
   "name": "react-chat",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://LadaKuzmina.github.io",
+  "homepage": "https://ladakuzmina.github.io/2024-2-VK-EDU-Frontend-L-Kuzmina",
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
