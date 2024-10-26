@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import ReactDOM from 'react-dom/client';
+
 import MainChats from './components/main-chats/MainChats';
 import HeaderChats from './components/header-chats/HeaderChats';
 import NewChatButton from './components/new-button-chat/NewButtonChat';
 import { chatsMocks } from './components/chat-mocks/chat-mocks';
+
+import './index.css';
 
 const App = () => {
     const [chats, setChats] = useState([]);
@@ -56,6 +58,9 @@ const App = () => {
                     : chat
             )
         );
+
+        // тк selectedChat хранится в стейте, то при обновлении чатов, нужно обновлять и selectedChat
+        setSelectedChat(chat => ({ ...chat, messages: [...chat.messages, newMessage] }))
     };
 
     return (
@@ -72,4 +77,5 @@ const App = () => {
     );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(<App />)
