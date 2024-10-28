@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import MainChats from './components/main-chats/MainChats';
 import HeaderChats from './components/header-chats/HeaderChats';
 import NewChatButton from './components/new-button-chat/NewButtonChat';
-import { chatsMocks } from '../api/mocks/mocks';
+import { chatsMocks } from './api/mocks/mocks';
 
 import './index.css';
 
