@@ -1,13 +1,18 @@
-import HeaderChats from "./components/header-chats/HeaderChats";
-import MainChats from "./components/main-chats/MainChats";
+import ChatsPage from "./pages/ChatsPage";
+import ChatPage from "./pages/ChatPage";
+import { HashRouter, Route, Routes } from "react-router-dom";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
-  return (
-    <>
-      <HeaderChats/>
-      <MainChats/>
-    </>
-  );
+    return (
+        <HashRouter>
+            <Routes>
+                <Route path={'/'} element={<ChatsPage />} />
+                <Route path={'/chat/:id'} element={<ChatPage />} />
+                <Route path={'/edit'} element={<ProfilePage/>}/>
+            </Routes>
+        </HashRouter>
+    );
 }
 
 export default App;

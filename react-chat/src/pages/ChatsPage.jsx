@@ -1,17 +1,11 @@
-import React, {StrictMode, useEffect, useState} from 'react';
-import ReactDOM from 'react-dom/client';
+import React, { useEffect, useState } from 'react';
+import HeaderChats from "../components/header-chats/HeaderChats";
+import MainChats from "../components/main-chats/MainChats";
+import { chatsMocks } from '../api/mocks/mocks'; // Импортируем моки чатов
 
-import MainChats from './components/main-chats/MainChats';
-import HeaderChats from './components/header-chats/HeaderChats';
-import NewChatButton from './components/new-button-chat/NewButtonChat';
-import { chatsMocks } from './api/mocks/mocks';
-
-import './index.css';
-import {HashRouter} from "react-router-dom";
-
-const App = () => {
+function ChatsPage() {
     const [chats, setChats] = useState([]);
-    const [selectedChat, setSelectedChat] = useState(null); // Managing selected chat
+    const [selectedChat, setSelectedChat] = useState(null);
 
     useEffect(() => {
         if (!localStorage.getItem('myMessage-1')) {
@@ -47,39 +41,28 @@ const App = () => {
             chatOwner: messages[0]?.chatOwner || 'Unknown',
         };
         const updatedMessages = [...messages, newMessage];
-
         localStorage.setItem(`myMessage-${chatId}`, JSON.stringify(updatedMessages));
 
         setChats(chats =>
             chats.map(chat =>
-                chat.id === chatId
-                    ? { ...chat, messages: [...chat.messages, newMessage] }
-                    : chat
+                chat.id === chatId ? { ...chat, messages: updatedMessages } : chat
             )
         );
 
-        setSelectedChat(chat => ({ ...chat, messages: [...chat.messages, newMessage] }))
+        setSelectedChat(chat => ({ ...chat, messages: updatedMessages }));
     };
 
     return (
-        <div>
-            {!selectedChat && <HeaderChats />}
+        <>
+            <HeaderChats />
             <MainChats
                 chats={chats}
                 saveMessage={saveMessageToLocalStorage}
                 selectedChat={selectedChat}
                 setSelectedChat={setSelectedChat}
             />
-            {!selectedChat && <NewChatButton />}
-        </div>
+        </>
     );
-};
+}
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
-root.render(
-    <StrictMode>
-        <HashRouter>
-            <App />
-        </HashRouter>
-    </StrictMode>
-)
+export default ChatsPage;
