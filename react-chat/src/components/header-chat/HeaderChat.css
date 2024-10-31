@@ -1,0 +1,55 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #8e24aa;
+  color: #fdfbfd;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 80px;
+}
+
+.header span {
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+#arrow-back {
+  margin-left: 15px;
+}
+
+#default-icon {
+  font-size: 50px;
+}
+
+#more-vert {
+  margin-left: 10px;
+  justify-items: flex-end;
+}
+
+.header .time-interlocutor {
+  color: #d0a6dc;
+  font-size: 15px;
+  padding: 0;
+}
+
+.symbols {
+  margin-right: 10px;
+}
+
+.interlocutor {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding-bottom: 10px;
+}
+
+.info-interlocutor {
+  display: flex;
+  flex-direction: column;
+}
+
+.name-interlocutor {
+  margin: 15px 0;
+}

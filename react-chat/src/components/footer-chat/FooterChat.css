@@ -1,0 +1,35 @@
+.form {
+    margin: 10px 0;
+    width: 100%;
+    display: inline-block;
+    border: 1px solid rgba(25, 25, 25, 0.32);
+}
+
+.message-footer {
+    border-radius: 4px;
+    padding: 10px 4px;
+    background-color: white;
+    display: flex;
+}
+
+input[type=submit] {
+    visibility: collapse;
+}
+
+input {
+    border: 0;
+    outline: none;
+    width: calc(100% - 2px);
+}
+
+.form-input {
+    background: white;
+}
+
+.attachment {
+    margin-right: 10px;
+}
+
+.footer {
+    width: 100%;
+}
