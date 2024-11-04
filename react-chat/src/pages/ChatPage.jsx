@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import HeaderChat from '../components/header-chat/HeaderChat';
 import MainChat from '../components/main-chat/MainChat';
