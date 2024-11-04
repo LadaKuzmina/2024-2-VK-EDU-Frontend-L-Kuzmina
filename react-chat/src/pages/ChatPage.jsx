@@ -6,15 +6,8 @@ import FooterChat from '../components/footer-chat/FooterChat';
 
 const ChatPage = () => {
     const { id } = useParams();
-    const [chat, setChat] = useState(null);
-
-    useEffect(() => {
-
-        const messages = JSON.parse(localStorage.getItem(`myMessage-${id}`) || '[]');
-        if (messages.length > 0) {
-            setChat({ id, messages });
-        }
-    }, [id]);
+    const messages = JSON.parse(localStorage.getItem(`myMessage-${id}`) || '[]');
+    const [chat, setChat] = useState({ id, messages });
 
     const saveMessageToLocalStorage = (messageText) => {
         const messages = JSON.parse(localStorage.getItem(`myMessage-${id}`) || '[]');

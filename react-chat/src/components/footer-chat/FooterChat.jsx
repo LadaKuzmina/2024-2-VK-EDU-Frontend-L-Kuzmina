@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import './FooterChat.css';
 
-const FooterChat = ({ chatId, saveMessage }) => {
+const FooterChat = ({ saveMessage }) => {
     const [message, setMessage] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
         if (message.trim() !== '') {
-            saveMessage(chatId, message);
+            saveMessage(message);
             setMessage('');
         }
     };
