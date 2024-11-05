@@ -4,11 +4,15 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SearchIcon from '@mui/icons-material/Search';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import './HeaderChat.css';
+import {useNavigate} from "react-router-dom";
 
-const HeaderChat = ({ interlocutorName, onBack }) => {
+const HeaderChat = ({ interlocutorName }) => {
+    const navigate = useNavigate();
     return (
         <header className="header">
-            <span id="arrow-back" className="icon" onClick={onBack}>
+            <span id="arrow-back" className="icon" onClick={() => {
+                navigate('/');
+            }}>
                 <ArrowBackIcon />
             </span>
             <div className="interlocutor">

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CheckIcon from '@mui/icons-material/Check';
 import './MainChats.css';
@@ -7,10 +8,12 @@ import FooterChat from '../footer-chat/FooterChat';
 import HeaderChat from '../header-chat/HeaderChat';
 
 const MainChats = ({ chats, saveMessage, selectedChat, setSelectedChat }) => {
+    const navigate = useNavigate();
+
     if (selectedChat) {
         return (
             <>
-                <HeaderChat interlocutorName={selectedChat.messages[0]?.chatOwner} onBack={() => setSelectedChat(null)} />
+                <HeaderChat interlocutorName={selectedChat.messages[0]?.chatOwner} />
                 <MainChat messages={selectedChat.messages} />
                 <FooterChat chatId={selectedChat.id} saveMessage={saveMessage} />
             </>
@@ -23,7 +26,10 @@ const MainChats = ({ chats, saveMessage, selectedChat, setSelectedChat }) => {
                 <div
                     key={chat.id}
                     className="chat-item"
-                    onClick={() => setSelectedChat(chat)}
+                    onClick={() => {
+                        setSelectedChat(chat);
+                        navigate(`/chat/${chat.id}`);
+                    }}
                 >
                     <div className="info-left-side">
                         <span className="icon"><AccountCircleIcon /></span>
