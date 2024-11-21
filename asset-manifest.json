@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/2024-2-VK-EDU-Frontend-L-Kuzmina/static/css/main.c61b8efc.css",
-    "main.js": "/2024-2-VK-EDU-Frontend-L-Kuzmina/static/js/main.937301d3.js",
+    "main.css": "/2024-2-VK-EDU-Frontend-L-Kuzmina/static/css/main.2bfe6d52.css",
+    "main.js": "/2024-2-VK-EDU-Frontend-L-Kuzmina/static/js/main.a2a075f7.js",
     "index.html": "/2024-2-VK-EDU-Frontend-L-Kuzmina/index.html",
-    "main.c61b8efc.css.map": "/2024-2-VK-EDU-Frontend-L-Kuzmina/static/css/main.c61b8efc.css.map",
-    "main.937301d3.js.map": "/2024-2-VK-EDU-Frontend-L-Kuzmina/static/js/main.937301d3.js.map"
+    "main.2bfe6d52.css.map": "/2024-2-VK-EDU-Frontend-L-Kuzmina/static/css/main.2bfe6d52.css.map",
+    "main.a2a075f7.js.map": "/2024-2-VK-EDU-Frontend-L-Kuzmina/static/js/main.a2a075f7.js.map"
   },
   "entrypoints": [
-    "static/css/main.c61b8efc.css",
-    "static/js/main.937301d3.js"
+    "static/css/main.2bfe6d52.css",
+    "static/js/main.a2a075f7.js"
   ]
 }
