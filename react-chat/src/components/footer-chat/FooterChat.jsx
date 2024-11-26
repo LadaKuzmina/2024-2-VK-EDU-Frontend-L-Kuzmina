@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import './FooterChat.css';
-import {sendMessageToBackend} from "../../api/apiService";
+import {sendMessage} from "../../api/messages";
+
 
 const FooterChat = ({ chatId, saveMessage }) => {
     const [message, setMessage] = useState('');
@@ -10,9 +11,7 @@ const FooterChat = ({ chatId, saveMessage }) => {
         event.preventDefault();
         if (message.trim() !== '') {
             try {
-                // Отправка сообщения на сервер
-                const response = await sendMessageToBackend(chatId, message);
-                // Сохранение сообщения локально для мгновенного отображения
+                const response = await sendMessage(chatId, message);
                 saveMessage({
                     id: response.id,
                     text: response.text,

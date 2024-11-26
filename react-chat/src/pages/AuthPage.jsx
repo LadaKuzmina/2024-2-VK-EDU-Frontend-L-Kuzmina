@@ -1,43 +1,44 @@
-import React, { useState } from 'react';
-import {loginUser} from "../api/apiService";
+import React, { useState, useContext } from 'react';
+import { loginUser } from '../api/auth';
+import { useNavigate } from 'react-router-dom';
+import {AuthContext} from "../api/context/AuthContext";
+import {getCurrentUser} from "../api/users";
 
 
 const AuthPage = () => {
-    const [credentials, setCredentials] = useState({
-        username: '',
-        password: '',
-    });
-    const [tokens, setTokens] = useState(null);
+    const [credentials, setCredentials] = useState({ username: '', password: '' });
     const [errorMessage, setErrorMessage] = useState('');
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setCredentials((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-    };
+    const { setAuthData } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const data = await loginUser(credentials);
-            setTokens(data);
-            setErrorMessage('');
+            // Логин пользователя
+            const { access, refresh } = await loginUser(credentials);
+
+            // Получение информации о текущем пользователе
+            const user = await getCurrentUser(access);
+
+            // Сохранение данных в контекст
+            setAuthData({ accessToken: access, refreshToken: refresh, user });
+
+            // Перенаправление на главную страницу
+            navigate('/');
         } catch (error) {
+            // Обработка ошибок
             setErrorMessage(error.response?.data?.detail || 'Login failed');
-            setTokens(null);
         }
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setCredentials((prev) => ({ ...prev, [name]: value }));
     };
 
     return (
         <div>
             <h1>Login</h1>
-            {tokens && (
-                <div>
-                    <p style={{ color: 'green' }}>successful!</p>
-                </div>
-            )}
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             <form onSubmit={handleSubmit}>
                 <div>
