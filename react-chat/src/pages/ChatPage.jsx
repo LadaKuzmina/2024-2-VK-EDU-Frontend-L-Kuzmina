@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import HeaderChat from '../components/header-chat/HeaderChat';
 import MainChat from '../components/main-chat/MainChat';
 import FooterChat from '../components/footer-chat/FooterChat';
-import { getMessages, sendMessage, fetchMessages } from '../api/messages';
+import { getMessages, sendMessage } from '../api/messages';
 
 const ChatPage = () => {
     const { id } = useParams(); // Chat ID
