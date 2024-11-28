@@ -1,12 +1,8 @@
 import React from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
-import ChatsPage from "./src/pages/ChatsPage";
-import ChatPage from "./src/pages/ChatPage";
-import ProfilePage from "./src/pages/ProfilePage";
-import RegisterPage from "./src/pages/RegisterPage";
-import AuthPage from "./src/pages/AuthPage";
-import AuthManager from "./managers/auth/AuthManager";
-import AuthProvider from "./context/AuthContext";
+import ChatsPage from "./pages/ChatsPage";
+import ChatPage from "./pages/ChatPage";
+import ProfilePage from "./pages/ProfilePage";
 
 
 function App() {
