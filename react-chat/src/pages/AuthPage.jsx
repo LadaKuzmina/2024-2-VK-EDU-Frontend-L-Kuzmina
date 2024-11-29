@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useState, useContext } from 'react';
 import { loginUser } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
 import {AuthContext} from "../context/AuthContext";
@@ -10,13 +10,13 @@ const AuthPage = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const { setAuthData } = useContext(AuthContext);
     const navigate = useNavigate();
-    const { authData } = useContext(AuthContext);
+    // const { authData } = useContext(AuthContext);
 
-    useEffect(() => {
-        if (authData?.accessToken) {
-            navigate(-1); // Возврат к предыдущей странице
-        }
-    }, [authData, navigate]);
+    // useEffect(() => {
+    //     if (authData?.accessToken) {
+    //         navigate(-1); // Возврат к предыдущей странице
+    //     }
+    // }, [authData, navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

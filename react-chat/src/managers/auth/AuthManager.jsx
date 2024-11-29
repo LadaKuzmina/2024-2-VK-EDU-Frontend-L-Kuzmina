@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import {HashRouter, Navigate, Outlet, Route, Routes} from 'react-router-dom';
+import {HashRouter, Route, Routes, Navigate} from 'react-router-dom';
 import {AuthContext} from "../../context/AuthContext";
 import App from "../../App";
 import RegisterPage from "../../pages/RegisterPage";
@@ -16,6 +16,7 @@ const AuthManager = () => {
                 <Routes>
                     <Route path="/register" element={<RegisterPage />} />
                     <Route path="/auth" element={<AuthPage />} />
+                    <Route path="*" element={<Navigate to="/auth" />} />
                 </Routes>
             </HashRouter>
         )
