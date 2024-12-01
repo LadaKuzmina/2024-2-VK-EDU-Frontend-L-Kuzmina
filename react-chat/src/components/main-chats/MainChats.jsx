@@ -7,15 +7,15 @@ import MainChat from '../main-chat/MainChat';
 import FooterChat from '../footer-chat/FooterChat';
 import HeaderChat from '../header-chat/HeaderChat';
 
-const MainChats = ({ chats, saveMessage, selectedChat, setSelectedChat }) => {
+const MainChats = ({ chats, selectedChat, setSelectedChat }) => {
     const navigate = useNavigate();
 
     if (selectedChat) {
         return (
             <>
-                <HeaderChat interlocutorName={selectedChat.messages[0]?.chatOwner} />
+                <HeaderChat interlocutorName={selectedChat.title} />
                 <MainChat messages={selectedChat.messages} />
-                <FooterChat chatId={selectedChat.id} saveMessage={saveMessage} />
+                <FooterChat chatId={selectedChat.id} />
             </>
         );
     }
@@ -34,12 +34,16 @@ const MainChats = ({ chats, saveMessage, selectedChat, setSelectedChat }) => {
                     <div className="info-left-side">
                         <span className="icon"><AccountCircleIcon /></span>
                         <div className="user-info-interlocutor">
-                            <span className="name-interlocutor">{chat.messages[0]?.chatOwner}</span>
-                            <span className="message">{chat.messages[chat.messages.length - 1]?.message}</span>
+                            <span className="name-interlocutor">{chat.title}</span>
+                            <span className="message">
+                                {chat.last_message ? chat.last_message.text : 'Нет сообщений'}
+                            </span>
                         </div>
                     </div>
                     <div className="info-right-side">
-                        <span className="message-timestamp">{chat.messages[chat.messages.length - 1]?.timestamp}</span>
+                        <span className="message-timestamp">
+                            {chat.updated_at && new Date(chat.updated_at).toLocaleString()}
+                        </span>
                         <span id="check-icon" className="icon"><CheckIcon /></span>
                     </div>
                 </div>
