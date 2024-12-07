@@ -4,35 +4,36 @@ import HeaderChat from '../components/header-chat/HeaderChat';
 import MainChat from '../components/main-chat/MainChat';
 import FooterChat from '../components/footer-chat/FooterChat';
 import { getMessages, sendMessage } from '../api/messages';
+import {getChatById} from "../api/chats";
 
 const ChatPage = () => {
-    const { id } = useParams(); // Chat ID
+    const {id} = useParams();
     const [messages, setMessages] = useState([]);
     const [interlocutorName, setInterlocutorName] = useState('Unknown');
 
     const fetchMessages = useCallback(async () => {
         try {
             const data = await getMessages(id);
-            setMessages(data.results);
-            if (data.results.length > 0) {
-                setInterlocutorName(data.results[0].sender.first_name || 'Unknown');
+            setMessages(data);
+            if (data.length > 0) {
+                const dataChat = await getChatById(id);
+                setInterlocutorName(dataChat.title || 'Unknown');
             }
         } catch (error) {
             console.error('Failed to fetch messages:', error);
         }
     }, [id]);
 
-    // Функция для сохранения нового сообщения
+
     const saveMessageToBackend = async (messageText) => {
         try {
-            const newMessage = await sendMessage({ chat: id, text: messageText });
+            const newMessage = await sendMessage({chat: id, text: messageText});
             setMessages((prevMessages) => [...prevMessages, newMessage]);
         } catch (error) {
             console.error('Failed to send message:', error);
         }
     };
 
-    // Поллинг: периодическое обновление сообщений
     useEffect(() => {
         fetchMessages();
 
@@ -45,9 +46,9 @@ const ChatPage = () => {
 
     return (
         <>
-            <HeaderChat interlocutorName={interlocutorName} />
-            <MainChat messages={messages} />
-            <FooterChat chatId={id} saveMessage={saveMessageToBackend} />
+            <HeaderChat interlocutorName={interlocutorName}/>
+            <MainChat messages={messages}/>
+            <FooterChat chatId={id} saveMessage={saveMessageToBackend}/>
         </>
     );
 };

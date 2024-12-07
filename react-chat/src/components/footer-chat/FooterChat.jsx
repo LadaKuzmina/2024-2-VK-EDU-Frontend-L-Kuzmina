@@ -11,13 +11,7 @@ const FooterChat = ({ chatId, saveMessage }) => {
         event.preventDefault();
         if (message.trim() !== '') {
             try {
-                const response = await sendMessage(chatId, message);
-                saveMessage({
-                    id: response.id,
-                    text: response.text,
-                    author: 'Автор',
-                    timestamp: new Date(response.created_at).toLocaleTimeString().slice(0, -3),
-                });
+                await sendMessage(chatId, message);
             } catch (error) {
                 console.error('Ошибка при отправке сообщения:', error);
             }
