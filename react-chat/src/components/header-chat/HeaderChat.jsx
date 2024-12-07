@@ -4,8 +4,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SearchIcon from '@mui/icons-material/Search';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import './HeaderChat.css';
-import {useNavigate, useParams} from "react-router-dom";
-import {getChatById} from "../../api/chats";
+import {useNavigate} from "react-router-dom";
 
 const HeaderChat = ({ interlocutorName }) => {
     const navigate = useNavigate();
