@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import './FooterChat.css';
+import {sendMessage} from "../../api/messages";
 
-const FooterChat = ({ saveMessage }) => {
+
+const FooterChat = ({ chatId, saveMessage }) => {
     const [message, setMessage] = useState('');
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         if (message.trim() !== '') {
-            saveMessage(message);
+            try {
+                await sendMessage(chatId, message);
+            } catch (error) {
+                console.error('Ошибка при отправке сообщения:', error);
+            }
             setMessage('');
         }
     };
