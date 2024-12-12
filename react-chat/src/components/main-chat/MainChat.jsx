@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './MainChat.css';
 
 const MainChat = ({ messages }) => {
@@ -18,6 +19,15 @@ const MainChat = ({ messages }) => {
             </div>
         </main>
     );
+};
+
+// Добавление проверки типов пропсов
+MainChat.propTypes = {
+    messages: PropTypes.arrayOf(PropTypes.shape({
+        author: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired,
+        timestamp: PropTypes.string.isRequired,
+    })).isRequired,
 };
 
 export default MainChat;

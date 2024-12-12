@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import './FooterChat.css';
 import {sendMessage} from "../../api/messages";
 
-
-const FooterChat = ({ chatId, saveMessage }) => {
+const FooterChat = ({ chatId }) => {
     const [message, setMessage] = useState('');
 
     const handleSubmit = async (event) => {
@@ -35,6 +35,11 @@ const FooterChat = ({ chatId, saveMessage }) => {
             </form>
         </footer>
     );
+};
+
+// Добавление проверки типов пропсов
+FooterChat.propTypes = {
+    chatId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
 export default FooterChat;

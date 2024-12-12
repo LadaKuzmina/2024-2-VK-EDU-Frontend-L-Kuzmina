@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SearchIcon from '@mui/icons-material/Search';
@@ -28,6 +29,11 @@ const HeaderChat = ({ interlocutorName }) => {
             </div>
         </header>
     );
+};
+
+// Добавление проверки типов пропсов
+HeaderChat.propTypes = {
+    interlocutorName: PropTypes.string.isRequired,
 };
 
 export default HeaderChat;
