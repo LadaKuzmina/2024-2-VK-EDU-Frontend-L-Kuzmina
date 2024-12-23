@@ -1,0 +1,67 @@
+.container {
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 600px;
+    text-align: center;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.clear-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    color: #4b8fec;
+    background: transparent;
+    border-color: transparent;
+}
+
+.list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.list-item {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    text-align: left;
+}
+
+.language-pair {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.translated-text {
+    color: #555;
+    margin: 1px;
+}
+
+.original-text {
+    color: #000;
+    margin: 1px;
+}
+
+.empty-message {
+    color: #888;
+    font-size: 16px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+}
+
+.arrow-back {
+    cursor: pointer;
+}
+
+ul, li {
+    list-style: none;
+}
