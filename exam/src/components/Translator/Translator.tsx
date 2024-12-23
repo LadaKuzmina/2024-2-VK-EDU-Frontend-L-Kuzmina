@@ -2,34 +2,53 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { addTranslation } from "../../redux/translationSlice";
-import './translatorStyles.css'
+import './translatorStyles.css';
 import { History } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import {languageOptions} from "../../languages/const";
-
+import { languageOptions } from "../../languages/const";
 
 const Translator: React.FC = () => {
     const [text, setText] = useState("");
     const [sourceLang, setSourceLang] = useState("auto");
     const [targetLang, setTargetLang] = useState("ru");
     const [translatedText, setTranslatedText] = useState("");
+    const [detectedLang, setDetectedLang] = useState<string | null>(null);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleTranslate = async () => {
+        if (!text.trim()) {
+            console.error("Please enter text to translate.");
+            return;
+        }
+
         try {
+            const langpair = `${sourceLang === "auto" ? "" : sourceLang}|${targetLang}`;
             const response = await axios.get("https://api.mymemory.translated.net/get", {
                 params: {
                     q: text,
-                    langpair: `${sourceLang}|${targetLang}`,
+                    langpair,
                 },
             });
+
             const translation = response.data.responseData.translatedText;
+            const detectedLanguage = response.data.responseData.detectedSourceLanguage;
+
+            if (sourceLang === "auto" && detectedLanguage) {
+                setDetectedLang(detectedLanguage);
+            }
+
+            if (response.data.responseStatus !== 200) {
+                console.error("Translation API error:", response.data);
+                setTranslatedText("Translation failed. Please try again.");
+                return;
+            }
+
             setTranslatedText(translation);
 
             dispatch(
                 addTranslation({
-                    sourceLang,
+                    sourceLang: detectedLanguage || sourceLang,
                     targetLang,
                     originalText: text,
                     translatedText: translation,
@@ -37,8 +56,10 @@ const Translator: React.FC = () => {
             );
         } catch (error) {
             console.error("Translation error:", error);
+            setTranslatedText("An error occurred while translating. Please try again.");
         }
     };
+
 
     return (
         <div className="container-translator">
@@ -78,6 +99,9 @@ const Translator: React.FC = () => {
             {translatedText && (
                 <div className="result-box">
                     <strong>Result:</strong> {translatedText}
+                    {detectedLang && sourceLang === "auto" && (
+                        <p className="detected-lang">Detected Language: {detectedLang}</p>
+                    )}
                 </div>
             )}
         </div>

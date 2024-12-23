@@ -1,5 +1,5 @@
 export const languageOptions: { [key: string]: string } = {
-    "Autodetect": "auto",
+    "Autodetect": "Autodetect",
     "Afrikaans": "af-ZA",
     "Albanian": "sq-AL",
     "Amharic": "am-ET",
