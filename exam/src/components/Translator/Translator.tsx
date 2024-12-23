@@ -9,8 +9,8 @@ import { languageOptions } from "../../languages/const";
 
 const Translator: React.FC = () => {
     const [text, setText] = useState("");
-    const [sourceLang, setSourceLang] = useState("auto");
-    const [targetLang, setTargetLang] = useState("ru");
+    const [sourceLang, setSourceLang] = useState("Autodetect");
+    const [targetLang, setTargetLang] = useState("en-GB");
     const [translatedText, setTranslatedText] = useState("");
     const [detectedLang, setDetectedLang] = useState<string | null>(null);
     const navigate = useNavigate();
@@ -23,7 +23,7 @@ const Translator: React.FC = () => {
         }
 
         try {
-            const langpair = `${sourceLang === "auto" ? "" : sourceLang}|${targetLang}`;
+            const langpair = `${sourceLang}|${targetLang}`;
             const response = await axios.get("https://api.mymemory.translated.net/get", {
                 params: {
                     q: text,
@@ -34,7 +34,7 @@ const Translator: React.FC = () => {
             const translation = response.data.responseData.translatedText;
             const detectedLanguage = response.data.responseData.detectedSourceLanguage;
 
-            if (sourceLang === "auto" && detectedLanguage) {
+            if (sourceLang === "Autodetect" && detectedLanguage) {
                 setDetectedLang(detectedLanguage);
             }
 
@@ -79,7 +79,6 @@ const Translator: React.FC = () => {
                     value={sourceLang}
                     onChange={(e) => setSourceLang(e.target.value)}
                 >
-                    <option value="auto">Auto Detect</option>
                     {Object.entries(languageOptions).map(([label, code]) => (
                         <option key={code} value={code}>{label}</option>
                     ))}
